@@ -1,0 +1,98 @@
+Installing MongoDB Driver for C# (Windows)
+Zachary Roth
+Jan. 25, 2018
+
+A challenge with the default Unity setup is the default .NET/Mono framework projects target. The default version is .NET 3.5 (as of Jan. 2018), and while stable it can be challenging to find compatible external libraries without significant effort/recompiling.
+
+To install the MongoDB driver for C#, Unity should first be set to use an updated version of .NET:
+
+1) Open Unity project
+2) Open the Unity "Player Settings" (Edit -> Project Settings -> Player)
+3) An Inspector window will open on the right. Look for the Scripting Runtime Version and change the setting from "Stable ().NET 3.5 Equivalent)" to "Experimental (.NET 4.6 Equivalent)" This is under the Other Settings heading and the Configuration sub-heading
+
+
+Now we can install the drivers directly through Visual Studio:
+
+
+4) Open Visual Studio through Unity (Assets -> Open C# Project)
+5) Open the NuGet Package Manager (Tools -> NuGet Package Manager -> Manage NuGet Packages for Solution...)
+6) The package manager view will open. Select the Browse tab and type "mongodb" in the search bar.
+7) Select the MongoDB.Driver (Official .NET driver for MongoDB). As of Jan. 25, 2018 this is version 2.5.0.
+8) On the panel to the right, click the checkbox to select the current Visual Studio project and/or solution.
+9) Click the Install button
+10) By default, the console output at the bottom of the screen will show the status of the installation. Verify it installs correctly before continuing. (If you get an error about the targeted framework, most likely the targeted .NET framework was not set first. Otherwise, choosing to install a lower version of the package may correct the issue.)
+11) There will be a similarly named driver named MongoDB.Bson in the search results. As of Jan.25, 2018 this will also be version 2.5.0. Repeat steps 8-10 to install the Bson driver.
+
+
+At this point, a few more steps should be taken to ensure the drivers are properly configured.
+
+
+12) If you have not done so previous, create a C# class to test the driver. In the import/include statements at the top of the file, add the following statements:
+
+using MongoDB.Driver;
+using MongoDB.Bson;
+
+to include the drivers. At this point, IntelliSense (auto code completion) should suggest functions and classes as you type. A test class is at the bottom of this file to test the connection with a hardcoded search to MongoDB.
+
+
+When you reach this point the driver should be correctly configured, but Unity may not recognize the .dll files installed by the NuGet Package Manager. You can see this error if you click the Play button on your Unity scene. When the related MongoDB drivers are run, a red error will appear in the debug console (by default under the Game window). If there is no error, you (probably) set it up correctly! If you do see an error, you will need to add additional files to the Unity project's assets (this may not be the proper solution, but it works):
+
+13) I recommend first creating a folder to store the files in. In the Project pane, right click the Assets folder and choose Create -> Folder. Name it something similar to "MongoDrivers".
+
+14) Locate the .dll files installed from NuGet. First navigate to the Project Folder/packages directory. You will see three MongoDB folders and a DnsClient folder named similar to:
+
+DnsClient.1.0.7
+MongoDB.Bson.2.5.0
+MongoDB.Driver.2.5.0
+MongoDB.Driver.Core.2.5.0
+
+15) For each of the four folders above, open the lib/net45 directory. Copy all files in this directory to the Project Folder/Assets/MongoDrivers folder. (There should be a .dll and a .xml file, copy both.)
+
+16) If you switch back to the Unity window, there may be a loading window that appears as Unity refactors the new assets. In the Project pane, click on the MongoDrivers folder under the Assets folder and verify the copied files appear.
+
+17) Click on the error output at the bottom of the game window. This will open up a larger debug window. Click Clear to remove the previous error.
+
+18) Click the Play button for the Unity scene. If you printed out to the debug console, you should see the correct results in the window.
+
+
+
+//Test Class for MongoDB-C# Driver. Copy and paste this or write your own.
+using MongoDB.Driver;
+using MongoDB.Bson;
+using UnityEngine;
+
+public class ConnectionTest : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
+        DBTest();
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+	}
+
+    void DBTest()
+    {
+        // Connect directly to a single MongoDB server
+        var client = new MongoClient("mongodb://localhost:27017");
+
+        // Get DB and collection
+        var database = client.GetDatabase("UnityTestDB");
+        var collection = database.GetCollection<BsonDocument>("testCubeMovement");
+
+        // Set document filter (find document with given field-value pair)
+        var filter = Builders<BsonDocument>.Filter.Eq("role", "test2");
+        var sort = Builders<BsonDocument>.Sort.Descending("role");
+
+        // Set projection
+        var projection = Builders<BsonDocument>.Projection.Exclude("_id");
+
+        // Search for document with given parameters
+        var document = collection.Find(new BsonDocument()).Project(projection).First();
+
+        // Print the retrieved document to the Unity debug console
+        Debug.Log(document.ToString());
+    }
+}

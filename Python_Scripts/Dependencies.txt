@@ -1,0 +1,11 @@
+Dependency: 	pymongo
+Install:	--pip install pymongo
+Description: 	Required to interface with MongoDB.
+
+Dependency:	serial
+Install:	--pip install pyserial
+Description: 	Required to interface with serial ports (Zigbee Radios)
+
+Dependency:	xbee
+Install: 	--pip install xbee
+Description:	Required to correctly format Zigbee messages. (Eli and Aaron need to look into this)

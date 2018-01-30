@@ -123,16 +123,16 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="DnsClient">
- <HintPath>C:/Users/Derek/Desktop/MongoDB_Test/Assets/MongoDBDepend/DnsClient.1.0.7/lib/net45/DnsClient.dll</HintPath>
+ <HintPath>C:/capstone-g11/unity_toolbox/MongoDB_Test/Assets/MongoDBDepend/DnsClient.1.0.7/lib/net45/DnsClient.dll</HintPath>
  </Reference>
  <Reference Include="MongoDB.Bson">
- <HintPath>C:/Users/Derek/Desktop/MongoDB_Test/Assets/MongoDBDepend/MongoDB.Bson.2.5.0/lib/net45/MongoDB.Bson.dll</HintPath>
+ <HintPath>C:/capstone-g11/unity_toolbox/MongoDB_Test/Assets/MongoDBDepend/MongoDB.Bson.2.5.0/lib/net45/MongoDB.Bson.dll</HintPath>
  </Reference>
  <Reference Include="MongoDB.Driver">
- <HintPath>C:/Users/Derek/Desktop/MongoDB_Test/Assets/MongoDBDepend/MongoDB.Driver.2.5.0/lib/net45/MongoDB.Driver.dll</HintPath>
+ <HintPath>C:/capstone-g11/unity_toolbox/MongoDB_Test/Assets/MongoDBDepend/MongoDB.Driver.2.5.0/lib/net45/MongoDB.Driver.dll</HintPath>
  </Reference>
  <Reference Include="MongoDB.Driver.Core">
- <HintPath>C:/Users/Derek/Desktop/MongoDB_Test/Assets/MongoDBDepend/MongoDB.Driver.Core.2.5.0/lib/net45/MongoDB.Driver.Core.dll</HintPath>
+ <HintPath>C:/capstone-g11/unity_toolbox/MongoDB_Test/Assets/MongoDBDepend/MongoDB.Driver.Core.2.5.0/lib/net45/MongoDB.Driver.Core.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/Derek/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>

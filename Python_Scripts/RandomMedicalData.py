@@ -52,7 +52,7 @@ def makeRandomDataForTimeRange(deviceID, timeStart=0, timeEnd=5, stepsPerSecond=
 	return result
 
 def prettyPrint(searchResult):
-	print json.dumps(searchResult, indent=2, sort_keys=True)
+	print(json.dumps(searchResult, indent=2, sort_keys=True))
 
 def garble():
 	result = {}:
@@ -60,7 +60,7 @@ def garble():
 		garbleText = ""
 		for j in range(random.randint(1,3)):
 			garbleText += char(random.random() * 128)
-			print garbleText
+			print(garbleText)
 		result[garbleText] = randint(-25, 25) * random.random()
 	return json
 
@@ -127,7 +127,7 @@ def main():
 		json = makeRandomDataForTimeRange(deviceID, timeStart=0, timeEnd=5, stepsPerSecond=2)
 		insert_many_json(json)
 	for timeStamp in search_by_device_id(1):
-		print timeStamp
+		print(timeStamp)
 	#prettyPrint(search_by_device_id(1))
 	#prettyPrint(search_by_time_range(1.5, 9.9999))
 	#print search_by_device_ids([1,2])

@@ -1,0 +1,15 @@
+Installing MongoDB Driver for C# (Windows)
+Derek Paschal
+Created : Jan. 30, 2018
+Updated : Jan. 30, 2018
+
+Prerequisites:
+==================
+Unity
+
+
+1)	Create a new Unity Project in the Unity Launcher.
+2)	Open the Editor Settings (Edit -> Project Settings -> Editor)
+3)	In the Editor Settings pane under "Version Control" set "Mode" to "Visible Meta Files", and under "Asset Serialization" set "Mode" to "Force Text".
+
+The Unity Project is ready to be version controlled.

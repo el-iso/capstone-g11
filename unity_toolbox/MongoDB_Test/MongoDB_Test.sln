@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDB_Test", "MongoDB_Test.csproj", "{0DFFE101-BC5C-73E0-8AF0-E8A1B706A8F8}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDB_Test", "Assembly-CSharp.csproj", "{F4EA6555-CAA5-9F78-5BA3-A75DB4AD43C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0DFFE101-BC5C-73E0-8AF0-E8A1B706A8F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DFFE101-BC5C-73E0-8AF0-E8A1B706A8F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DFFE101-BC5C-73E0-8AF0-E8A1B706A8F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DFFE101-BC5C-73E0-8AF0-E8A1B706A8F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4EA6555-CAA5-9F78-5BA3-A75DB4AD43C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4EA6555-CAA5-9F78-5BA3-A75DB4AD43C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4EA6555-CAA5-9F78-5BA3-A75DB4AD43C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4EA6555-CAA5-9F78-5BA3-A75DB4AD43C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

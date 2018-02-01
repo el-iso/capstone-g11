@@ -17,13 +17,6 @@ public class ConnectionTest : MonoBehaviour {
     void Start() {
         //Hardcoded connection to MongoDB server
         EstablishConnection("mongodb://localhost:27017", "randomdata", "randomTest");
-
-        // Testing purposes only:
-        //var result = SearchRecentByDeviceID(0, 10);
-        //foreach (var thing in result)
-        //{
-        //    Debug.Log(thing.ToJson());
-        //}
     }
 
     // Unity Function : Update is called once per frame
@@ -140,54 +133,9 @@ public class ConnectionTest : MonoBehaviour {
     /// <returns></returns>
     public static List<BsonDocument> SearchRecentByDeviceID(int deviceID, int limit = 10000)
     {
-        //var filter = Builders<BsonDocument>.Filter.Eq("did", deviceID);
-        //var sort = Builders<BsonDocument>.Sort.Ascending("sent");
-        //var result = Collection.Find(filter).Sort(sort).ToList();
-        //return result;
-
         var filter = Builders<BsonDocument>.Filter.Empty;
-        var result = Collection.Find(filter).ToList();
+        var sort = Builders<BsonDocument>.Sort.Descending("sent");
+        var result = Collection.Find(filter).Limit(limit).Sort(sort).ToList();
         return result;
     }
-
-    //static BsonDocument SearchByTimeRange(int timeStart, int timeEnd, int deviceID, int limit = 10000)
-    //{
-    //    //var builder = Builders<BsonDocument>.Filter;
-    //    //builder.And(builder.Eq("did", deviceID), builder.Lt("sent", timeEnd));
-    //    var filter = Builders<BsonDocument>.Filter.Eq("did", deviceID);
-    //    var sort = Builders<BsonDocument>.Sort.Ascending("sent");
-    //    var result = Collection.Find(filter).Sort(sort).ToBsonDocument();
-    //    return result;
-    //}
-
-    //public static String getLastHeartRate()
-    //{
-    //    //// Connect directly to a single MongoDB server
-    //    //var client = new MongoClient("mongodb://localhost:27017");
-
-    //    // Get DB and collection
-    //    //var database = client.GetDatabase("randomData");
-    //    //var collection = database.GetCollection<BsonDocument>("randomTest");
-
-    //    // Set document filter (find document with given field-value pair)
-    //    //var filter = Builders<BsonDocument>.Filter.Eq("role", "test2");
-    //    var sort = Builders<BsonDocument>.Sort.Ascending("sent");
-
-    //    // Set projection
-    //    //var projection = Builders<BsonDocument>.Projection.Exclude("_id");
-    //    var projection = Builders<BsonDocument>.Projection.Include("h").Exclude("b").Exclude("r").Exclude("did").Exclude("sent");
-
-    //    // Search for document with given parameters
-    //    //var str = "";
-    //    //while (cursor.hasNext())
-    //    //{
-    //    //    items.append(cursor.next().toJson());
-
-    //    //}
-
-    //    var document = Collection.Find(new BsonDocument()).Project(projection).Sort(sort);
-    //    // Print the retrieved document to the Unity debug console
-    //    //Debug.Log(document.ToString());
-    //    return document.ToString();
-    //}
 }

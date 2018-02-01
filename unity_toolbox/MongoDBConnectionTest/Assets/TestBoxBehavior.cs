@@ -35,47 +35,47 @@ public class TestBoxBehavior : MonoBehaviour
         if (this.frameDelay > 0) this.delayActive = true; else this.delayActive = false;
     }
 
-    void FixedUpdate()
-    {
-        this.dbTimer += 1;
-        if (this.dbTimer > this.dbDelay)
-        {
-            this.dbTimer = 0;
-            getNewDBValue();
-            print(this.speed);
-        }
+    //void FixedUpdate()
+    //{
+    //    this.dbTimer += 1;
+    //    if (this.dbTimer > this.dbDelay)
+    //    {
+    //        this.dbTimer = 0;
+    //        getNewDBValue();
+    //        print(this.speed);
+    //    }
 
 
 
-        this.timer += speed;
-        if (this.delayActive && this.timer > this.frameDelay)
-        {
-            this.timer = 0;
-            this.delayActive = false;
-        }
+    //    this.timer += speed;
+    //    if (this.delayActive && this.timer > this.frameDelay)
+    //    {
+    //        this.timer = 0;
+    //        this.delayActive = false;
+    //    }
 
-        if (this.delayActive)
-        {
-            return;
-        }
+    //    if (this.delayActive)
+    //    {
+    //        return;
+    //    }
 
-        //var dbValues = ConnectionTest.SearchRecentByDeviceID(0, 10);
-        //foreach (var thing in dbValues)
-        //{
-        //    Debug.Log(thing.ToJson());
-        //}
-        //speed = (float) ((dbValues[0]["r"]).AsDouble) % 6;
+    //    //var dbValues = ConnectionTest.SearchRecentByDeviceID(0, 10);
+    //    //foreach (var thing in dbValues)
+    //    //{
+    //    //    Debug.Log(thing.ToJson());
+    //    //}
+    //    //speed = (float) ((dbValues[0]["r"]).AsDouble) % 6;
         
-        float newSize = this.startSize + ((0.5f * (this.endSize - this.startSize) * (Mathf.Cos((this.timer / 60.0f) + Mathf.PI) + 1)));
-        //double newSize = this.startSize + obj;
-        var scale = new Vector3(((float)newSize % float.MaxValue), this.yScale, ((float)newSize % float.MaxValue));
-        this.tr.localScale = scale;
-    }
+    //    float newSize = this.startSize + ((0.5f * (this.endSize - this.startSize) * (Mathf.Cos((this.timer / 60.0f) + Mathf.PI) + 1)));
+    //    //double newSize = this.startSize + obj;
+    //    var scale = new Vector3(((float)newSize % float.MaxValue), this.yScale, ((float)newSize % float.MaxValue));
+    //    this.tr.localScale = scale;
+    //}
 
-    void getNewDBValue()
-    {
-        var dbValues = ConnectionTest.SearchRecentByDeviceID(0, 10);
-        print(dbValues[0]["r"].AsDouble%6.0);
-        this.speed = (float)((dbValues[0]["r"]).AsDouble) % 6;
-    }
+    //void getNewDBValue()
+    //{
+    //    var dbValues = ConnectionTest.SearchRecentByDeviceID(0, 10);
+    //    print(dbValues[0]["r"].AsDouble%6.0);
+    //    this.speed = (float)((dbValues[0]["r"]).AsDouble) % 6;
+    //}
 }

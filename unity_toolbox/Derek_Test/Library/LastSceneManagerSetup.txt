@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Schemes/Test001.unity
+- path: Assets/_Schemes/HeartTest.unity
   isLoaded: 1
   isActive: 1

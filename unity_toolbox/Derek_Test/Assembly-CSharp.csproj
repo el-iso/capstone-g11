@@ -124,6 +124,18 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="DnsClient">
+ <HintPath>C:/capstone-g11/unity_toolbox/Derek_Test/Assets/MongoDB_depend/DnsClient.1.0.7/lib/net45/DnsClient.dll</HintPath>
+ </Reference>
+ <Reference Include="MongoDB.Bson">
+ <HintPath>C:/capstone-g11/unity_toolbox/Derek_Test/Assets/MongoDB_depend/MongoDB.Bson.2.5.0/lib/net45/MongoDB.Bson.dll</HintPath>
+ </Reference>
+ <Reference Include="MongoDB.Driver">
+ <HintPath>C:/capstone-g11/unity_toolbox/Derek_Test/Assets/MongoDB_depend/MongoDB.Driver.2.5.0/lib/net45/MongoDB.Driver.dll</HintPath>
+ </Reference>
+ <Reference Include="MongoDB.Driver.Core">
+ <HintPath>C:/capstone-g11/unity_toolbox/Derek_Test/Assets/MongoDB_depend/MongoDB.Driver.Core.2.5.0/lib/net45/MongoDB.Driver.Core.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/Derek/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -144,18 +156,6 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/Derek/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
- </Reference>
- <Reference Include="MongoDB.Bson">
- <HintPath>C:/capstone-g11/unity_toolbox/Derek_Test/Assets/MongoDB_depend/MongoDB.Bson.2.5.0/lib/net45/MongoDB.Bson.dll</HintPath>
- </Reference>
- <Reference Include="MongoDB.Driver">
- <HintPath>C:/capstone-g11/unity_toolbox/Derek_Test/Assets/MongoDB_depend/MongoDB.Driver.2.5.0/lib/net45/MongoDB.Driver.dll</HintPath>
- </Reference>
- <Reference Include="DnsClient">
- <HintPath>C:/capstone-g11/unity_toolbox/Derek_Test/Assets/MongoDB_depend/DnsClient.1.0.7/lib/net45/DnsClient.dll</HintPath>
- </Reference>
- <Reference Include="MongoDB.Driver.Core">
- <HintPath>C:/capstone-g11/unity_toolbox/Derek_Test/Assets/MongoDB_depend/MongoDB.Driver.Core.2.5.0/lib/net45/MongoDB.Driver.Core.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

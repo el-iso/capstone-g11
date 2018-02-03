@@ -1,12 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterfallGraph", "WaterfallGraph.csproj", "{FFCFC8D5-A837-41B9-E4A1-ADAF4ABAA10A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFCFC8D5-A837-41B9-E4A1-ADAF4ABAA10A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFCFC8D5-A837-41B9-E4A1-ADAF4ABAA10A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFCFC8D5-A837-41B9-E4A1-ADAF4ABAA10A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFCFC8D5-A837-41B9-E4A1-ADAF4ABAA10A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

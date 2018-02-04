@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BPM : MonoBehaviour {
 
+    //MongoContainer is a game object with MongoInterface.cs as a component
     public GameObject MongoContainer;
     private MongoInterface mongo;
 
@@ -25,14 +26,13 @@ public class BPM : MonoBehaviour {
         {
             return mongo.GetRespiration();
         }
-        return 100.0f;
+        return 60.0f;
     }
 
     // Use this for initialization
     void Start () {
         mongo = MongoContainer.GetComponent<MongoInterface>();
         scale_at_start = transform.localScale;
-        print(Mathf.Sin(Mathf.PI * 1.5f));
     }
 	
 	// Update is called once per frame
@@ -44,25 +44,8 @@ public class BPM : MonoBehaviour {
     {
         float BPM = updateBPM();
         float frequency = BPM / 60f;
-        float period;
-        if (frequency - 0.01f < 0.0f)
-        {
-            period = 0.0f;
-        }
-        else if (frequency < 0.0f)
-        {
-            period = 0.0f;
-        }
-        else
-        {
-            period = 1.0f / frequency;
-        }
-        //print("Freq="+frequency.ToString()+"\tPeriod=" + period.ToString() + "\tRadians=" + radians.ToString());
         radians += frequency * Time.fixedDeltaTime;
-        //print(radians);
-
-
         float adjustment = (Mathf.Sin(Mathf.PI * radians) + 2) / 2;
-        transform.localScale = scale_at_start * adjustment;
+        transform.localScale = scale_at_start * adjustment * ScaleConstant;
     }
 }

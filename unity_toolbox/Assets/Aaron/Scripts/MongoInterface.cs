@@ -30,7 +30,13 @@ public class MongoInterface : MonoBehaviour {
 
     // Unity Function : Update is called once per frame
     void Update() {
-        if(Time.time - time_of_last_poll >= poll_interval)
+        
+    }
+
+    //Called once per fixed physics time step
+    void FixedUpdate()
+    {
+        if (Time.time - time_of_last_poll >= poll_interval)
         {
             var results = SearchRecentByDeviceID(0, 1);
             heartbeat = float.Parse(results[0]["h"].ToString());

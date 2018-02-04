@@ -1,0 +1,41 @@
+This tutorial will guide you through creating spheres
+in unity that pulse at a frequency received from the
+mongo database.
+
+1. Create two new spheres, name one "Lungs" and one "Heart"
+(or whatever you want, one will represent hearbeat, the
+other will represent respiration)
+
+1.1 Customize these spheres however you want, I changed
+the Heart sphere to the material Red and Lungs to Blue.
+
+2. Position the Camera and Spheres such that both spheres
+are in view of the camera.  The settings I used were:
+Camera: Pos(0,5,0), Rot(90,0,0)
+Sphere1(Heart): Pos(-1,0,0)
+Sphere2(Lungs): Pos(1,0,0)
+
+
+3. Add a new empty gameobject (Gameobject -> Create Empty).
+Name this game object "Mongo".  Add the MongoInterface.cs
+script found in unity_toolbox/Assets/Aaron/MongoInterface.cs
+to this object.
+
+4. Attach BPM.cs script found in unity_toolbox/Assets/Aaron/Scripts/BPM.cs
+to both spheres.  In the component menu for the BPM script,
+uncheck respiration on the heart sphere and uncheck heartbeat
+on the lungs sphere.  These options tell the BPM script which
+data to use. If both are left checked it will default to heartbeat.
+
+5. Select one sphere in the hierarchy, and find the BPM script you just attached.
+There is a field called Mongo Container.  Drag the Mongo object you created in 
+step 3 into that field. A small three colored cube should appear in the Mongo 
+Container field with "Mongo" beside it.  This allows the BPM script to reference
+the MongoInterface script without searching for it.
+5.1 Repeat for the other sphere.
+
+6. Run the DirectToMongo.py script found in Python_Scripts/DirectToMongo.py
+in a new command prompt
+
+7. Enter play mode. Your spheres should now be pulsing at the most recent
+Beats Per Minute specified in Mongo for heartrate and respiration.  

@@ -1,7 +1,7 @@
 Installing MongoDB Driver for C# (Windows)
 Zachary Roth & Derek Paschal
 Created : Jan. 25, 2018
-Updated : Jan. 30, 2018
+Updated : Feb. 5, 2018
 
 Prerequisites:
 ==================
@@ -18,12 +18,10 @@ To install the MongoDB driver for C#, Unity should first be set to use an update
 3) Save the Scene and Project.
 4) Open the Unity "Player Settings" (Edit -> Project Settings -> Player)
 5) An Inspector window will open on the right. Look for the Scripting Runtime Version and change the setting from "Stable ().NET 3.5 Equivalent)" to "Experimental (.NET 4.6 Equivalent)" This is under the Other Settings heading and the Configuration sub-heading
-6) In the Assets folder of the Unity Project, Paste the "MongoDB_depend" folder included with this documentation.  This will allow the Unity compiler to find the MongoDB references in C# Scripts.
+6) In the _Unity_Global folder in unity_toolbox, use the "SymlinkCreator.bat" script and the included "readme.txt" to link the "MongoDB_C#_Driver" directory to your Unity Project Assets folder. This will allow the Unity compiler to find the MongoDB references in C# Scripts.
 
 7) If you have not done so previously, create a C# class to test the driver. In the import/include statements at the top of the file, add the following statements:	using MongoDB.Driver;
 																																									using MongoDB.Bson;
-
-
 
 
 A test class is at the bottom of this file to test the connection with a hardcoded search to MongoDB.

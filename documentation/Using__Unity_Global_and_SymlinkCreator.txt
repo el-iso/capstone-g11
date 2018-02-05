@@ -1,0 +1,21 @@
+Using _Unity_Global and SymlinkCreator.bat (Windows)
+Derek Paschal
+Created : Feb. 3, 2018
+Updated : Feb. 5, 2018
+
+
+How to use the _Unity_Global folder.
+
+The _Unity_Global folder is to be used for Unity Assets that may require changes or updates that should populate to all Unity Projects that refernce the assets in _Unity_Global (ex. Mongo_Interface, Mongo_C#_Driver)
+
+If there is an asset in the _Unity_Global folder that you would like to use in your Unity Project:
+
+1)	Copy the full path of your Unity Project Assets folder (ex. "C:\capstone-g11\unity_toolbox\_Test\Assets")
+2)	Run the "SymlinkCreator.bat" script as Administrator
+3)	Type the relative path of the item (file or directory) that you would like to link to
+4)	Paste the full path of your Unity Project Assets folder when asked for the destination path, and add a descriptive name for the link to the end of the path (ex. "C:\capstone-g11\unity_toolbox\Derek_Test\Assets\link_name")
+5)	Follow the instructions to specify if you are linking a file or directory
+
+Assets linked from the _Unity_Global folder ARE in your Unity Project Asset folder as far as Unity (and other programs) knows.  Any changes made in Unity to any linked document ARE made to that document in the _Unity_Global folder.
+
+A quirk of symlinks: git will think that your linked assets ARE in your Unity Project Asset folder.  This will cause git to create a new instance (copy) of the file that is linked in the repository.  Just ensure that your own copy of the git project uses a symlink instead of a copy of the file.

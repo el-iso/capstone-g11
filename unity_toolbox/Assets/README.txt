@@ -1,0 +1,1 @@
+The purpose of this folder is to store the unity assets we have generated seperate from the projects they were created in.  Hopefully this will encourage us to write generalized code and enable us to drag and drop from others' work into our own projects.

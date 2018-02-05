@@ -2,76 +2,109 @@
 using MongoDB.Bson;
 using UnityEngine;
 using System;
-using System.Text;
 using System.Collections.Generic;
 
 public class MongoInterface : MonoBehaviour {
+
+    public static string database = "randomdata";
+    public static string collection = "randomTest";
+    public static float poll_interval = 1.0f; //How ofter (in seconds) the database is polled
 
     // Database variables
     private static MongoClient Client { get; set; }
     private static IMongoDatabase Database { get; set; }
     private static IMongoCollection<BsonDocument> Collection { get; set; }
-    private static string database = "randomdata";
-    private static string collection = "randomTest";
 
+    private static float heartbeat = 100.0f;
+    private static float respiration = 100.0f;
+    private static float bloodOxygen = 100.0f;
 
-    //Exposed Variables
-    private static float heartrate;
-    public static float heartRate
-    {
-        get { return heartRate; }
-        set { MongoInterface.heartrate = value; }
-    }
+    private static float time_of_last_poll = 0.0f;
 
     // Unity Function : Use this for initialization
     void Start() {
         //Hardcoded connection to MongoDB server
-        EstablishConnection("mongodb://localhost:27017", MongoInterface.database, MongoInterface.collection);
+        EstablishConnection("mongodb://localhost:27017", database, collection);
     }
 
     // Unity Function : Update is called once per frame
     void Update() {
+        if(Time.time - time_of_last_poll >= poll_interval)
+        {
+            var results = SearchRecentByDeviceID(0, 1);
+            heartbeat = float.Parse(results[0]["h"].ToString());
+            respiration = float.Parse(results[0]["r"].ToString());
+            bloodOxygen = float.Parse(results[0]["b"].ToString());
+            //print(heartbeat);
+            time_of_last_poll = Time.time;
+        }
+    }
 
+    /// <summary>
+    /// Returns the most recent value of heartbeat pulled from MongoDB
+    /// </summary>
+    /// <returns></returns>
+    public static float GetHeartbeat()
+    {
+        return heartbeat;
+    }
+
+    /// <summary>
+    /// Returns the most recent value of respiration pulled from MongoDB
+    /// </summary>
+    /// <returns></returns>
+    public static float GetRespiration()
+    {
+        return respiration;
+    }
+
+    /// <summary>
+    /// Returns the most recent value of blood oxygenation pulled from MongoDB
+    /// </summary>
+    /// <returns></returns>
+    public static float GetBloodOxygen()
+    {
+        return bloodOxygen;
     }
 
     /// <summary>
     /// Initializes the MongoDB connection. Automatically called through Start()
     /// </summary>
-    /// <param name="connectionString">IP address for connection</param>
-    /// <param name="dbName">Database to Use</param>
-    /// <param name="collectionName">Collection to Use</param>
+    /// <param name="connectionString"></param>
+    /// <param name="dbName"></param>
+    /// <param name="collectionName"></param>
     private static void EstablishConnection(string connectionString, string dbName, string collectionName)
     {
         // Set database variables
-        MongoInterface.Client = new MongoClient(connectionString);
-        MongoInterface.Database = MongoInterface.Client.GetDatabase(dbName);
-        MongoInterface.Collection = MongoInterface.Database.GetCollection<BsonDocument>(collectionName);
+        Client = new MongoClient(connectionString);
+        Database = Client.GetDatabase(dbName);
+        Collection = Database.GetCollection<BsonDocument>(collectionName);
     }
 
     /// <summary>
     /// Drops the database passed as a parameter. Returns true if database dropped, false otherwise.
     /// </summary>
-    /// <param name="dbName">Database to Drop</param>
-    private static bool DropDatabase(string dbName)
+    /// <param name="dbName"></param>
+    public static bool DropDatabase(string dbName)
     {
         // Check if database exists
-        if (MongoInterface.Client.GetDatabase(dbName) == null)
+        if (Client.GetDatabase(dbName) == null)
             return false;
 
         // Remove old references
-        if (String.Equals(dbName, MongoInterface.Database.DatabaseNamespace.DatabaseName))
+        if (String.Equals(dbName, Database.DatabaseNamespace.DatabaseName))
         {
             // Remove Collection reference if within database
-            if (System.Object.ReferenceEquals(MongoInterface.Collection, MongoInterface.Database.GetCollection<BsonDocument>(MongoInterface.Collection.CollectionNamespace.CollectionName)))
-                MongoInterface.Collection = null;
+            if (System.Object.ReferenceEquals(Collection, Database.GetCollection<BsonDocument>(Collection.CollectionNamespace.CollectionName)))
+                Collection = null;
             Database = null;
         }
 
         // Drop database
-        MongoInterface.Client.DropDatabase(dbName);
+        Client.DropDatabase(dbName);
 
         // Verify database was dropped
-        if (MongoInterface.Client.GetDatabase(dbName) == null)
+        if (Client.GetDatabase(dbName) == null)
             return true;
         else
             return false;
@@ -81,18 +114,18 @@ public class MongoInterface : MonoBehaviour {
     /// Drops the collection in the current database. Returns true if collection dropped, false otherwise.
     /// </summary>
     /// <param name="dbName"></param>
-    private static bool DropCollection(string collectionName)
+    public static bool DropCollection(string collectionName)
     {
-        return DropCollection(MongoInterface.Database.DatabaseNamespace.DatabaseName, collectionName);
+        return DropCollection(Database.DatabaseNamespace.DatabaseName, collectionName);
     }
 
     /// <summary>
     /// Drops the collection in the specified database. Returns true if collection dropped, false otherwise.
     /// </summary>
     /// <param name="dbName"></param>
-    private static bool DropCollection(string dbName, string collectionName)
+    public static bool DropCollection(string dbName, string collectionName)
     {
-        var DB = MongoInterface.Client.GetDatabase(dbName);
+        var DB = Client.GetDatabase(dbName);
 
         // Check if collection exists
         if (DB == null || DB.GetCollection<BsonDocument>(collectionName) == null)
@@ -120,7 +153,7 @@ public class MongoInterface : MonoBehaviour {
     /// <param name="json"></param>
     private static async void InsertDocument(string json)
     {
-        await MongoInterface.Collection.InsertOneAsync(BsonDocument.Parse(json));
+        await Collection.InsertOneAsync(BsonDocument.Parse(json));
     }
 
     /// <summary>
@@ -136,7 +169,7 @@ public class MongoInterface : MonoBehaviour {
 
     /// <summary>
     /// Returns up to limit number of recent documents in the current database matching deviceID.
-    /// TODO: Use Async calls? Probably dont need in this case
+    /// TODO: Use Async calls?
     /// </summary>
     /// <param name="deviceID"></param>
     /// <param name="limit"></param>
@@ -148,17 +181,4 @@ public class MongoInterface : MonoBehaviour {
         var result = Collection.Find(filter).Limit(limit).Sort(sort).ToList();
         return result;
     }
-
-
-    //Implementation Specific
-
-    private static void RetrievePublicValues()
-    {
-        var filter = Builders<BsonDocument>.Filter.Empty;
-        var sort = Builders<BsonDocument>.Sort.Descending("sent");
-        var result = Collection.Find(filter).Limit(1).Sort(sort).ToList();
-
-        float h = float.Parse(result[0]["h"].AsString);
-    }
 }
-

@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CircleBehavior.cs" />
-     <Compile Include="Assets\Scripts\MongoInterface.cs" />
+     <Compile Include="Assets\Scripts\MongoInterface_0.0.2\MongoInterface.cs" />
      <Compile Include="Assets\Scripts\RotationSetDial.cs" />
      <None Include="Assets\MongoDB_depend\DnsClient.1.0.7\lib\net45\DnsClient.xml" />
      <None Include="Assets\MongoDB_depend\MongoDB.Driver.Core.2.5.0\lib\net45\MongoDB.Driver.Core.xml" />

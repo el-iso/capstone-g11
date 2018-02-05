@@ -40,8 +40,8 @@ MonoBehaviour:
     y: 471
     width: 899
     height: 476
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -317,9 +317,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.122680664, y: -0.19787407, z: 19.642628}
+    m_Target: {x: -0.13951874, y: -5.4024973, z: 21.44851}
     speed: 2
-    m_Value: {x: -0.122680664, y: -0.19787407, z: 19.642628}
+    m_Value: {x: -0.13951874, y: -5.4024973, z: 21.44851}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -343,13 +343,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.25321573, y: 0.61835873, z: -0.22034504, w: -0.7106071}
+    m_Target: {x: -0.14770333, y: 0.64266175, z: -0.12814109, w: -0.74077636}
     speed: 2
-    m_Value: {x: -0.25321573, y: 0.61835873, z: -0.22034504, w: -0.7106071}
+    m_Value: {x: -0.14770333, y: 0.64266175, z: -0.12814109, w: -0.74077636}
   m_Size:
-    m_Target: 16.624163
+    m_Target: 41.756145
     speed: 2
-    m_Value: 16.624163
+    m_Value: 41.756145
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -390,23 +390,23 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 92270000
     m_LastClickedID: 0
     m_ExpandedIDs: 9efbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: WaterfallDataPoint
+      m_OriginalName: WaterfallDataPoint
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 10216
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -488,18 +488,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Eli\Desktop\CapstoneGit\unity_toolbox\WaterfallGraph
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9a270000
-    m_LastClickedID: 10138
+    m_SelectedIDs: 74270000
+    m_LastClickedID: 10100
     m_ExpandedIDs: 0000000062270000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0

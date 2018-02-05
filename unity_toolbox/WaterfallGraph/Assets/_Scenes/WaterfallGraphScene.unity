@@ -113,11 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &824964816 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1521917543245472, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447,
-    type: 2}
-  m_PrefabInternal: {fileID: 1635821995}
 --- !u!1 &1003928378
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,61 +194,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1635821995
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4525587993461830, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525587993461830, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525587993461830, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525587993461830, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525587993461830, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525587993461830, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525587993461830, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525587993461830, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521917543245472, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_Name
-      value: WaterfallDataPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 1521917543245472, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54806806570966674, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1783045458
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c26e2f6dc46864d8b3c9427bb5eba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: {fileID: 824964816}
+  point: {fileID: 1521917543245472, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
 --- !u!4 &2059015346
 Transform:
   m_ObjectHideFlags: 0

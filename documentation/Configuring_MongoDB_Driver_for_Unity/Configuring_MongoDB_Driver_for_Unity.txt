@@ -13,15 +13,15 @@ A challenge with the default Unity setup is the default .NET/Mono framework proj
 
 To install the MongoDB driver for C#, Unity should first be set to use an updated version of .NET:
 
-1) Open a new Unity project
-2) Create a 3D object and a script, and attach the script to the 3D GameObject. This will ensure that Unity creates a C# Project to manage your scripts.
-3) Save the Scene and Project.
-4) Open the Unity "Player Settings" (Edit -> Project Settings -> Player)
-5) An Inspector window will open on the right. Look for the Scripting Runtime Version and change the setting from "Stable ().NET 3.5 Equivalent)" to "Experimental (.NET 4.6 Equivalent)" This is under the Other Settings heading and the Configuration sub-heading
-6) In the _Unity_Global folder in unity_toolbox, use the "SymlinkCreator.bat" script and the included "readme.txt" to link the "MongoDB_C#_Driver" directory to your Unity Project Assets folder. This will allow the Unity compiler to find the MongoDB references in C# Scripts.
+1)	Open a new Unity project
+2)	Create a 3D object and a script, and attach the script to the 3D GameObject. This will ensure that Unity creates a C# Project to manage your scripts.
+3)	Save the Scene and Project.
+4)	Open the Unity "Player Settings" (Edit -> Project Settings -> Player)
+5)	An Inspector window will open on the right. Look for the Scripting Runtime Version and change the setting from "Stable ().NET 3.5 Equivalent)" to "Experimental (.NET 4.6 Equivalent)" This is under the Other Settings heading and the Configuration sub-heading
+6)	Copy and Paste the "MongoDB_C#_Driver" directory included with this documentation to your Unity Project Assets folder. This will allow the Unity compiler to find the MongoDB references in C# Scripts. 
 
-7) If you have not done so previously, create a C# class to test the driver. In the import/include statements at the top of the file, add the following statements:	using MongoDB.Driver;
-																																									using MongoDB.Bson;
+7)	If you have not done so previously, create a C# class to test the driver. In the import/include statements at the top of the file, add the following statements:	using MongoDB.Driver;
+																																										using MongoDB.Bson;
 
 
 A test class is at the bottom of this file to test the connection with a hardcoded search to MongoDB.

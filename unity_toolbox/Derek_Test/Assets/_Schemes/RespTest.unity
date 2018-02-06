@@ -271,12 +271,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 246999231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f070a46a9c73ece40b7fe1b490c49068, type: 3}
+  m_Script: {fileID: 11500000, guid: bb65bd2b4661242478f0db2550038d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   endSize: 4
-  frameDelay: 50
-  speed: 1.5
+  frameDelay: 0
+  Heart_BloodOX_Resp: 2
 --- !u!1 &340822677
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,12 +602,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1847467458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f070a46a9c73ece40b7fe1b490c49068, type: 3}
+  m_Script: {fileID: 11500000, guid: bb65bd2b4661242478f0db2550038d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   endSize: 6
-  frameDelay: 25
-  speed: 1.5
+  frameDelay: 0
+  Heart_BloodOX_Resp: 2
 --- !u!1 &1963956587
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,9 +701,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1963956587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f070a46a9c73ece40b7fe1b490c49068, type: 3}
+  m_Script: {fileID: 11500000, guid: bb65bd2b4661242478f0db2550038d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   endSize: 8
   frameDelay: 0
-  speed: 1.5
+  Heart_BloodOX_Resp: 2

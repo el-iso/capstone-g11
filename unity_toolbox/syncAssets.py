@@ -12,6 +12,20 @@ types = (
 	("Materials","*.mat"),
 	)
 
+ignoreExtensions = ["txt", "py", "gitignore", "gitkeep", "meta"]
+
+def extensionDictionary(fileList):
+	result = {}
+	for file in fileList:
+		try:
+			extension = file.split(".")[1]
+			if extension in ignoreExtensions:
+				continue
+		except:
+			continue
+		result[extension] = result.get(extension,[]) + [file]
+	return result
+
 def directoryInfo(path, depth=0):
 	basename = os.path.split(path)[1]
 	dirsResult = []
@@ -20,30 +34,20 @@ def directoryInfo(path, depth=0):
 	for childPath, dirs, files in os.walk(path):
 		dirsResult += dirs
 		filesResult += [os.path.join(childPath,file) for file in files]
-		for file in files:
-			extension = file.split(".")[1]
-			fileTypes[extension] = fileTypes.get(extension, 0) + 1
+		extensionDict = extensionDictionary(files)
+		for k,v in extensionDict.items():
+			fileTypes[k] = fileTypes.get(k, 0) + len(v)
 		print("{} Items in {}\t{} Dir(s), {} File(s)".format(len(dirs+files), childPath.replace(path,basename), len(dirs), len(files)))
 	return (dirsResult, filesResult, fileTypes)
 
-def extensionDictionary(fileList):
-	result = {}
-	for file in fileList:
-		try:
-			extension = file.split(".")[1]
-		except:
-			continue
-		result[extension] = result.get(extension,[]) + [file]
-	return result
-
 def writeSyncList(path, sourceTargetDict):
-	with open(path, "w") as saveFile:
+	writeMode = "a" if os.path.exists(path) else "w"
+	with open(path, writeMode) as saveFile:
 		for source, target in sourceTargetDict.items():
 			saveFile.write("{}\n{}\n\n".format(source, target))
 
 	with open(os.path.join(os.path.split(path)[0], ".gitignore"), "a") as ignoreFile:
 		ignoreFile.write("sync.txt")
-
 
 def initSync(fileList):
 	syncNum = 0
@@ -74,9 +78,6 @@ def initSync(fileList):
 
 	writeSyncList(os.path.join(targetPath, "sync.txt"), targetDict)
 
-
-
-
 def askMakeNewSyncList():
 	Tk().withdraw()
 
@@ -89,13 +90,5 @@ def askMakeNewSyncList():
 	
 	if messagebox.askyesno("Import", askMessage):
 		syncMap = initSync(files)
-	#else:
-
-
-
 
 askMakeNewSyncList()
-
-
-#Tk().withdraw()
-#tdpPath = askopenfilenames(initialdir=".", title="Choose TDP file to simulate", filetypes=types)

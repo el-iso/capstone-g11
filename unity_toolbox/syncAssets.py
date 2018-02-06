@@ -4,6 +4,7 @@ from tkinter import messagebox
 
 import os
 import sys
+import shutil
 
 types = (
 	("All Files", "*"),
@@ -25,9 +26,56 @@ def directoryInfo(path, depth=0):
 		print("{} Items in {}\t{} Dir(s), {} File(s)".format(len(dirs+files), childPath.replace(path,basename), len(dirs), len(files)))
 	return (dirsResult, filesResult, fileTypes)
 
-def writeSyncList(fileList):
+def extensionDictionary(fileList):
+	result = {}
 	for file in fileList:
-		print(file)
+		try:
+			extension = file.split(".")[1]
+		except:
+			continue
+		result[extension] = result.get(extension,[]) + [file]
+	return result
+
+def writeSyncList(path, sourceTargetDict):
+	with open(path, "w") as saveFile:
+		for source, target in sourceTargetDict.items():
+			saveFile.write("{}\n{}\n\n".format(source, target))
+
+	with open(os.path.join(os.path.split(path)[0], ".gitignore"), "a") as ignoreFile:
+		ignoreFile.write("sync.txt")
+
+
+def initSync(fileList):
+	syncNum = 0
+	typeDict = extensionDictionary(fileList)
+	targetDict = {}
+	targetPath = askdirectory(initialdir="./Projects", title="Choose Target Assets Folder")
+
+	importDirPath = os.path.join(targetPath, "Imports")
+	if not os.path.exists(importDirPath):
+		os.mkdir(importDirPath)
+		print(importDirPath)
+	
+	for extension,files in typeDict.items():
+		extensionDirPath = os.path.join(importDirPath,extension.upper())
+		if not os.path.exists(extensionDirPath):
+			os.mkdir(extensionDirPath)
+			print(extensionDirPath)
+	
+		for file in files:
+			targetDirPath = os.path.join(extensionDirPath,os.path.basename(file))
+			targetDict[file] = targetDirPath
+			try:
+				shutil.copyfile(file, targetDirPath)
+				syncNum += 1
+			except Exception as e:
+				print("{}File Copy Failed\n{}".format(file, str(e)))
+	print("Synchronized: {} File(s)".format(syncNum))
+
+	writeSyncList(os.path.join(targetPath, "sync.txt"), targetDict)
+
+
+
 
 def askMakeNewSyncList():
 	Tk().withdraw()
@@ -40,7 +88,7 @@ def askMakeNewSyncList():
 		askMessage += "\n{}\t{}".format(k,v)
 	
 	if messagebox.askyesno("Import", askMessage):
-		writeSyncList(files)
+		syncMap = initSync(files)
 	#else:
 
 

@@ -12,7 +12,7 @@ public class WaterfallDataPointBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(this.gameObject.transform.localPosition.y < -25)
+		if(this.gameObject.transform.localPosition.y < -75)
         {
             Destroy(this.gameObject);
         }

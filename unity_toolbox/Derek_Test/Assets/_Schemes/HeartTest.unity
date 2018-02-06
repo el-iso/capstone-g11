@@ -415,12 +415,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1919890062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f070a46a9c73ece40b7fe1b490c49068, type: 3}
+  m_Script: {fileID: 11500000, guid: bb65bd2b4661242478f0db2550038d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endSize: 1.3
+  endSize: 1.4
   frameDelay: 0
-  speed: 0
+  Heart_BloodOX_Resp: 0
 --- !u!1 &2046965446
 GameObject:
   m_ObjectHideFlags: 0

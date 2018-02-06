@@ -2,26 +2,69 @@
 using MongoDB.Bson;
 using UnityEngine;
 using System;
-using System.Text;
 using System.Collections.Generic;
 
 public class MongoInterface : MonoBehaviour {
 
-    // Database variables
-    public static MongoClient Client { get; set; }
-    public static IMongoDatabase Database { get; set; }
-    public static IMongoCollection<BsonDocument> Collection { get; set; }
+    public static string database = "randomdata";
+    public static string collection = "randomTest";
+    public static float poll_interval = 1.0f; //How ofter (in seconds) the database is polled
 
+    // Database variables
+    private static MongoClient Client { get; set; }
+    private static IMongoDatabase Database { get; set; }
+    private static IMongoCollection<BsonDocument> Collection { get; set; }
+
+    private static float heartbeat = 100.0f;
+    private static float respiration = 100.0f;
+    private static float bloodOxygen = 100.0f;
+
+    private static float time_of_last_poll = 0.0f;
 
     // Unity Function : Use this for initialization
     void Start() {
         //Hardcoded connection to MongoDB server
-        EstablishConnection("mongodb://localhost:27017", "randomdata", "randomTest");
+        EstablishConnection("mongodb://localhost:27017", database, collection);
     }
 
     // Unity Function : Update is called once per frame
     void Update() {
+        if(Time.time - time_of_last_poll >= poll_interval)
+        {
+            var results = SearchRecentByDeviceID(0, 1);
+            heartbeat = float.Parse(results[0]["h"].ToString());
+            respiration = float.Parse(results[0]["r"].ToString());
+            bloodOxygen = float.Parse(results[0]["b"].ToString());
+            //print(heartbeat);
+            time_of_last_poll = Time.time;
+        }
+    }
 
+    /// <summary>
+    /// Returns the most recent value of heartbeat pulled from MongoDB
+    /// </summary>
+    /// <returns></returns>
+    public static float GetHeartbeat()
+    {
+        return heartbeat;
+    }
+
+    /// <summary>
+    /// Returns the most recent value of respiration pulled from MongoDB
+    /// </summary>
+    /// <returns></returns>
+    public static float GetRespiration()
+    {
+        return respiration;
+    }
+
+    /// <summary>
+    /// Returns the most recent value of blood oxygenation pulled from MongoDB
+    /// </summary>
+    /// <returns></returns>
+    public static float GetBloodOxygen()
+    {
+        return bloodOxygen;
     }
 
     /// <summary>
@@ -30,7 +73,7 @@ public class MongoInterface : MonoBehaviour {
     /// <param name="connectionString"></param>
     /// <param name="dbName"></param>
     /// <param name="collectionName"></param>
-    public static void EstablishConnection(string connectionString, string dbName, string collectionName)
+    private static void EstablishConnection(string connectionString, string dbName, string collectionName)
     {
         // Set database variables
         Client = new MongoClient(connectionString);
@@ -108,7 +151,7 @@ public class MongoInterface : MonoBehaviour {
     /// <param name="dbName"></param>
     /// <param name="collectionName"></param>
     /// <param name="json"></param>
-    public static async void InsertDocument(string json)
+    private static async void InsertDocument(string json)
     {
         await Collection.InsertOneAsync(BsonDocument.Parse(json));
     }
@@ -119,7 +162,7 @@ public class MongoInterface : MonoBehaviour {
     /// <param name="dbName"></param>
     /// <param name="collectionName"></param>
     /// <param name="json"></param>
-    public static async void InsertDocument(string dbName, string collectionName, string json)
+    private static async void InsertDocument(string dbName, string collectionName, string json)
     {
         await Client.GetDatabase(dbName).GetCollection<BsonDocument>(collectionName).InsertOneAsync(BsonDocument.Parse(json));
     }
@@ -131,7 +174,7 @@ public class MongoInterface : MonoBehaviour {
     /// <param name="deviceID"></param>
     /// <param name="limit"></param>
     /// <returns></returns>
-    public static List<BsonDocument> SearchRecentByDeviceID(int deviceID, int limit = 10000)
+    private static List<BsonDocument> SearchRecentByDeviceID(int deviceID, int limit = 10000)
     {
         var filter = Builders<BsonDocument>.Filter.Empty;
         var sort = Builders<BsonDocument>.Sort.Descending("sent");

@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircleBehavior : MonoBehaviour {
+public class PulseBehavior : MonoBehaviour {
 
     
     [Range(0.0f, 10.0f)]
     public float endSize;
     [Range(0, 100)]
     public int frameDelay;
-    public float speed = 0.0f;
+    [Range(0, 2)]
+    public int Heart_BloodOX_Resp;
 
     private Transform tr;
     private float timer;
     private float startSize;
     private float yScale;
     private bool delayActive;
+    private float speed = 0.0f;
 
     // Use this for initialization
     void Start () {
@@ -28,7 +30,21 @@ public class CircleBehavior : MonoBehaviour {
 
     void FixedUpdate()
     {
-        this.speed = MongoInterface.GetHeartbeat();
+        switch (this.Heart_BloodOX_Resp)
+        {
+            case 0:
+                this.speed = MongoInterface.GetHeartbeat();
+                break;
+            case 1:
+                this.speed = MongoInterface.GetBloodOxygen();
+                break;
+            case 2:
+                this.speed = MongoInterface.GetRespiration();
+                break;
+            default:
+                this.speed = MongoInterface.GetHeartbeat();
+                break;
+        }
         this.timer += speed/3600.0f;
         if (this.delayActive && this.timer > this.frameDelay)
         {

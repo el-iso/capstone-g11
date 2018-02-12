@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaterfallSpawner : MonoBehaviour {
 
+    private static System.Random random = new System.Random();
+
     int pos = 0;
     int spawnRate = 0;
 
@@ -29,18 +31,18 @@ public class WaterfallSpawner : MonoBehaviour {
     {
         if (heart)
         {
-            float data = mongo.GetHeartbeat() % 100;
+            float data = mongo.GetHeartbeat();
 
             return data;
         }
         if (respiration)
         {
-            float data = mongo.GetRespiration() % 100;
+            float data = mongo.GetRespiration();
             return data;
         }
         if (oxidization)
         {
-            float data = mongo.GetBloodOxygen() % 100;
+            float data = mongo.GetBloodOxygen();
             return data;
         }
 
@@ -68,9 +70,13 @@ public class WaterfallSpawner : MonoBehaviour {
             //Rigidbody rb = cube.GetComponent<Rigidbody>();
             //rb.useGravity = false;
             //rb.velocity = new Vector3(0, -5, 0);
-            GameObject clone = Instantiate(prefab, new Vector3(0, 0, updateData()), Quaternion.identity);
-            Renderer rend = clone.GetComponent(typeof(Renderer)) as Renderer;
-            rend.material.color = color;
+
+            for (int i = 1; i < 10; i++) {
+                GameObject clone = Instantiate(prefab, new Vector3(0, 0, updateData() % i*10), Quaternion.identity);
+                Renderer rend = clone.GetComponent(typeof(Renderer)) as Renderer;
+                rend.material.color = color;
+            }
+
 
             spawnRate = 0;
         }

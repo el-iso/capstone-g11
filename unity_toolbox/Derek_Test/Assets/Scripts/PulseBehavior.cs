@@ -7,17 +7,19 @@ public class PulseBehavior : MonoBehaviour {
     
     [Range(0.0f, 10.0f)]
     public float endSize;
-    [Range(0, 100)]
+    [Range(0, 60)]
     public int frameDelay;
     [Range(0, 2)]
     public int Heart_BloodOX_Resp;
+
+    public float speed = 0.0f;
 
     private Transform tr;
     private float timer;
     private float startSize;
     private float yScale;
     private bool delayActive;
-    private float speed = 0.0f;
+    
 
     // Use this for initialization
     void Start () {

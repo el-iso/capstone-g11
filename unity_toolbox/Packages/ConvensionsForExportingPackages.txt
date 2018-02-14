@@ -1,0 +1,28 @@
+This document contains information about how to structure your file structure
+under the in the Assets folder in a unity project. 
+
+Package Exporting can be found in the unity editor under "Assets->ExportPackage"
+Package Importing can be found under "Assets->Import Package->CustomPackage"
+
+The following file structure is necessary because we are using MongoDB in our project.
+We all want to share assets that use the same scripts and DLL dependencies, but the 
+unity exporter appears to use relative paths to find things.  To solve this, we have
+created a unity package called MongoDrivers.  
+This package also contains our MongoInterface.cs script and a prefab object which can 
+be used to reference the script. (THIS SYSTEM WILL CHANGE VERY SOON)
+
+
+
+File Structure:
+>Assets
+================From MongoDrivers Package=================
+>>Mongo
+>>>MongoDrivers
+>>>MongoScripts
+>>>MongoPrefab
+==================Your Package============================
+>>YourPackageName
+>>>YourAssets (Probably folders like Scripts, Materials, Prefabs, etc.)
+
+Make sure you always reference Mongo using the assets in the MongoDrivers package, or
+we won't be able to guarantee it will work when we try to merge into the master project.

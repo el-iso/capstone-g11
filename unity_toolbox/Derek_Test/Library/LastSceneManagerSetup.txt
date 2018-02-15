@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/_Schemes/RespTest.unity
-  isLoaded: 1
-  isActive: 1

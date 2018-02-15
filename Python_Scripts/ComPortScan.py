@@ -24,7 +24,7 @@ def choose_port(serial_port_list):
     print("Available Ports:")
     print(", ".join(serial_port_list))
     while(True):
-        choice = raw_input("Choose a port: ")
+        choice = input("Choose a port: ")
         try:
             choice = "COM{}".format(int(choice))
         except ValueError:

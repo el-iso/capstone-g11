@@ -1,1 +1,0 @@
-Folder for versioning of individual and team projects.

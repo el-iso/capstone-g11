@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/_scenes/BarGraph.unity
-  isLoaded: 1
-  isActive: 1

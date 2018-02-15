@@ -62,7 +62,7 @@ public class WaterfallSpawner : MonoBehaviour {
 
     void Update () {
         
-        if (spawnRate > 0)
+        if (spawnRate > 5)
         {
             //GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             //cube.AddComponent<Rigidbody>();

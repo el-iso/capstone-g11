@@ -11,16 +11,13 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -280,6 +277,33 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.GridFS">
+      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.GridFS.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy">
+      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="DnsClient">
+      <HintPath>Assets/Mongo/MongoDrivers/DnsClient.1.0.7/lib/net45/DnsClient.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Bson.2.5.0/lib/net45/MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.2.5.0/lib/net45/MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Core.2.5.0/lib/net45/MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/Users/Eli/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -301,37 +325,9 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Eli/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Core">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Legacy">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Legacy.dll</HintPath>
-    </Reference>
-    <Reference Include="DnsClient">
-      <HintPath>Assets/Mongo/MongoDrivers/DnsClient.1.0.7/lib/net45/DnsClient.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Bson.2.5.0/lib/net45/MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.2.5.0/lib/net45/MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.GridFS">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.GridFS.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Core">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Core.2.5.0/lib/net45/MongoDB.Driver.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Mongo\MongoScripts\MongoInterface.cs" />
-    <Compile Include="Assets\WaterfallGraph\Scripts\BPM.cs" />
     <Compile Include="Assets\WaterfallGraph\Scripts\WaterfallDataPointBehavior.cs" />
     <Compile Include="Assets\WaterfallGraph\Scripts\WaterfallSpawner.cs" />
   </ItemGroup>

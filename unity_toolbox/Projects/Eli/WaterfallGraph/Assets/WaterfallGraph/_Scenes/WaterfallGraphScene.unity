@@ -113,7 +113,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &842078836
+--- !u!1001 &297379975
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -152,18 +152,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1508159642209536, guid: 4afea1994a900a04ba847907dbd242e9, type: 2}
-      propertyPath: m_Name
-      value: Mongo
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4afea1994a900a04ba847907dbd242e9, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &842078837 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1508159642209536, guid: 4afea1994a900a04ba847907dbd242e9,
-    type: 2}
-  m_PrefabInternal: {fileID: 842078836}
 --- !u!1 &1003928378
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +230,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1003928378}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 25, y: -35, z: 40}
+  m_LocalPosition: {x: 45, y: -35, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -339,7 +330,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1521917543245472, guid: 2f8ab9b694c0dfd43b06ca3fbf33e447, type: 2}
   color: {r: 1, g: 0.02984432, b: 0.02984432, a: 0}
-  MongoContainer: {fileID: 842078837}
   ScaleConstant: 1
   heart: 1
   respiration: 0

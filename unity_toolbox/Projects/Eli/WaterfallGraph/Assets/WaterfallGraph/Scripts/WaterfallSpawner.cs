@@ -14,10 +14,6 @@ public class WaterfallSpawner : MonoBehaviour {
     //color to apply to prefab
     public Color color;
 
-    //MongoContainer is a game object with MongoInterface.cs as a component
-    public GameObject MongoContainer;
-    private MongoInterface mongo;
-
     public float ScaleConstant = 1.0f;
     public bool heart = true;
     public bool respiration = true;
@@ -31,18 +27,18 @@ public class WaterfallSpawner : MonoBehaviour {
     {
         if (heart)
         {
-            float data = mongo.GetHeartbeat();
+            float data = MongoInterface.GetHeartbeat();
 
             return data;
         }
         if (respiration)
         {
-            float data = mongo.GetRespiration();
+            float data = MongoInterface.GetRespiration();
             return data;
         }
         if (oxidization)
         {
-            float data = mongo.GetBloodOxygen();
+            float data = MongoInterface.GetBloodOxygen();
             return data;
         }
 
@@ -56,7 +52,6 @@ public class WaterfallSpawner : MonoBehaviour {
         //Renderer rend = prefab.GetComponent(typeof(Renderer)) as Renderer;
         //rend.sharedMaterial.color = color;
 
-        mongo = MongoContainer.GetComponent<MongoInterface>();
         scale_at_start = transform.localScale;
     }
 

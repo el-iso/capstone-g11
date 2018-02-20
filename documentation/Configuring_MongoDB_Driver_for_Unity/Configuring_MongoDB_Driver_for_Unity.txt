@@ -8,66 +8,12 @@ Prerequisites:
 MongoDB
 Unity
 
+1)	Open the Unity project.
+2)	Import the MongoDriver.unitypackage from the "Packages" folder.
+3)	Create an instance of the "Mongo" prefab from the "MongoPrefabs" folder by dragging it from the "Project" pane into the "Hierarchy" pane.  This will ensure that the "MongoInterface" script runs properly.
+4)	Save the Scene and Project if a scene/project does not already exist.
+5)	Open the Unity "Player Settings" (Edit -> Project Settings -> Player).
+6)	An Inspector window will open on the right. Under the "Other Settings" heading and the "Configuration" sub-heading change the "Api Compatibility Level*" setting from ".NET 2.0 Subset" to ".NET 2.0".
+7)	Restart your Unity project.
 
-A challenge with the default Unity setup is the default .NET/Mono framework projects target. The default version is .NET 3.5 (as of Jan. 2018), and while stable it can be challenging to find compatible external libraries without significant effort/recompiling.
-
-To install the MongoDB driver for C#, Unity should first be set to use an updated version of .NET:
-
-1)	Open a new Unity project
-2)	Create a 3D object and a script, and attach the script to the 3D GameObject. This will ensure that Unity creates a C# Project to manage your scripts.
-3)	Save the Scene and Project.
-4)	Open the Unity "Player Settings" (Edit -> Project Settings -> Player)
-5)	An Inspector window will open on the right. Look for the Scripting Runtime Version and change the setting from "Stable ().NET 3.5 Equivalent)" to "Experimental (.NET 4.6 Equivalent)" This is under the Other Settings heading and the Configuration sub-heading
-6)	Copy and Paste the "MongoDB_C#_Driver" directory included with this documentation to your Unity Project Assets folder. This will allow the Unity compiler to find the MongoDB references in C# Scripts. 
-
-7)	If you have not done so previously, create a C# class to test the driver. In the import/include statements at the top of the file, add the following statements:	using MongoDB.Driver;
-																																										using MongoDB.Bson;
-
-
-A test class is at the bottom of this file to test the connection with a hardcoded search to MongoDB.
-//---------------------------------------------------------
-
-
-
-
-
-//Test Class for MongoDB-C# Driver. Copy and paste this or write your own.
-using MongoDB.Driver;
-using MongoDB.Bson;
-using UnityEngine;
-
-public class ConnectionTest : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-        DBTest();
-	}
-
-	// Update is called once per frame
-	void Update () {
-
-	}
-
-    void DBTest()
-    {
-        // Connect directly to a single MongoDB server
-        var client = new MongoClient("mongodb://localhost:27017");
-
-        // Get DB and collection
-        var database = client.GetDatabase("UnityTestDB");
-        var collection = database.GetCollection<BsonDocument>("testCubeMovement");
-
-        // Set document filter (find document with given field-value pair)
-        var filter = Builders<BsonDocument>.Filter.Eq("role", "test2");
-        var sort = Builders<BsonDocument>.Sort.Descending("role");
-
-        // Set projection
-        var projection = Builders<BsonDocument>.Projection.Exclude("_id");
-
-        // Search for document with given parameters
-        var document = collection.Find(new BsonDocument()).Project(projection).First();
-
-        // Print the retrieved document to the Unity debug console
-        Debug.Log(document.ToString());
-    }
-}
+8)	The values in MongoDB are accessed using the MongoInterface.Get*() syntax.

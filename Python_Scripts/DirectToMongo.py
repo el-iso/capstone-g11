@@ -7,7 +7,7 @@ parser = argparse.ArgumentParser(description="Simulate receiving radio signals f
 parser.add_argument('-p', '--poll', type=float, default=0.5, help="How often (in seconds) each simulated device will send data [FLOAT, default=0.5]")
 parser.add_argument('-n', '--devices', type=int, default=1, help="How many devices will be simulated [INT, default=1]")
 parser.add_argument('-o', '--offset', type=int, default=0, help="DeviceIDs will begin incrememting at this number [INT, Default=0]")
-parser.add_argument('-s', '--sync', type=int, default=0, help="If 0: Devices send data at same time, Else: Devices send data evenly through time[INT, default=0")
+parser.add_argument('-a', '--async', type=int, default=0, help="If 0: Devices send data at same time, Else: Devices send data evenly through time[INT, default=0]")
 
 args = parser.parse_args()
 print(args)
@@ -30,7 +30,7 @@ def main():
 			message = d.NextMessage()
 			#print(message)
 			insert_json(message)
-			if(args.sync == 0):
+			if(args.async == 0):
 				if(d == device_list[-1]):
 					time.sleep(args.poll)
 			else:

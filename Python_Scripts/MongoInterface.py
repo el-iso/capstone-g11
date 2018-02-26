@@ -33,8 +33,9 @@ def drop_collection():
 	db.collection.drop()
 
 def insert_json(json):
+	print("Insert: {}".format(json))
 	collection.insert_one(json)
-	print("Insert")
+	
 
 def insert_many_json(jsonList):
 	collection.insert_many(jsonList)

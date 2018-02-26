@@ -1,5 +1,5 @@
 from MongoInterface import *
-from Device2 import Device
+from Device import Device
 import time
 import argparse
 

@@ -280,29 +280,8 @@
     <Reference Include="MongoDB.Bson">
       <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver.Core">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Core.dll</HintPath>
-    </Reference>
     <Reference Include="MongoDB.Driver">
       <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.GridFS">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.GridFS.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Legacy">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Legacy.dll</HintPath>
-    </Reference>
-    <Reference Include="DnsClient">
-      <HintPath>Assets/Mongo/MongoDrivers/DnsClient.1.0.7/lib/net45/DnsClient.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Bson.2.5.0/lib/net45/MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.2.5.0/lib/net45/MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Core">
-      <HintPath>Assets/Mongo/MongoDrivers/MongoDB.Driver.Core.2.5.0/lib/net45/MongoDB.Driver.Core.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/Users/Eli/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
@@ -330,6 +309,10 @@
     <Compile Include="Assets\Mongo\MongoScripts\MongoInterface.cs" />
     <Compile Include="Assets\WaterfallGraph\Scripts\WaterfallDataPointBehavior.cs" />
     <Compile Include="Assets\WaterfallGraph\Scripts\WaterfallSpawner.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Mongo\MongoDrivers\MongoDB.Bson.xml" />
+    <None Include="Assets\Mongo\MongoDrivers\MongoDB.Driver.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

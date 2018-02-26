@@ -40,7 +40,13 @@ def insert_json(json):
 def insert_many_json(jsonList):
 	collection.insert_many(jsonList)
 
-def make_index(index):
+def make_default_indexes():
+	collection.create_index([(alias_device, 1)], background=True)
+	collection.create_index([(alias_sent, -1)], background=True)
+	collection.create_index([(alias_device, 1), (alias_sent, -1)], background=True)
+
+def make_index(indexFields):
+
 	if len(collection.find({ index: { "$exists": true} })):
 		collection.create_index(index)
 	else:

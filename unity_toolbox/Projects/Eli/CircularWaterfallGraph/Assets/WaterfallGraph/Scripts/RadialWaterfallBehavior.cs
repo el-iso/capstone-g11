@@ -65,9 +65,14 @@ public class RadialWaterfallBehavior : MonoBehaviour
         prevData = new List<float>();
         delta = new List<float>();
         points = new List<GameObject>();
+        Vector3 axis = new Vector3(x ? 1 : 0, y ? 1 : 0, z ? 1 : 0);
         for (int i = 0; i < numPoints; i++)
         {
-            points.Add((GameObject)Instantiate(prefab));
+            GameObject g = Instantiate(prefab);
+            g.transform.SetParent(transform);
+            points.Add(g);
+
+            points[i].transform.RotateAround(transform.position, axis, i*(360/numPoints));
         }
 
         for (int i = 0; i < numPoints; i++)

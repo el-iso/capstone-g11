@@ -308,10 +308,10 @@
   <ItemGroup>
     <Compile Include="Assets\CameraAndKeyboardControls\CameraMovementAndPlacement.cs" />
     <Compile Include="Assets\GravityOrb\Scripts\CircleLineTransition.cs" />
-    <Compile Include="Assets\GravityOrb\Scripts\CirclularMovementRadialOut.cs" />
     <Compile Include="Assets\GravityOrb\Scripts\WaterfallInitializer.cs" />
     <Compile Include="Assets\Mongo\MongoScripts\MongoInterface.cs" />
-    <Compile Include="Assets\WaterfallGraph\Scripts\RadialWaterfallBehavior.cs" />
+    <Compile Include="Assets\RadialWaterfallGraph\CirclularMovementRadialOut.cs" />
+    <Compile Include="Assets\RadialWaterfallGraph\RadialWaterfallBehavior.cs" />
     <Compile Include="Assets\WaterfallGraph\Scripts\WaterfallDataPointBehavior.cs" />
     <Compile Include="Assets\WaterfallGraph\Scripts\WaterfallSpawner.cs" />
   </ItemGroup>

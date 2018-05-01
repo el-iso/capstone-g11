@@ -56,26 +56,19 @@ def randomize(val, hardRange, softRange, swingRange):
 	else:
 		return val + positiveComponent - negativeComponent 
 
-def partialRandom(deviceID, messageNum, previousJSON, clean=False, garble=0.05, drop=0.1):
+def partialRandom(deviceID, messageNum, previousJSON):
 	result = {}
-	if not clean:
-		if random.random() < drop:
-			return (drop_code, None)
-		if random.random() < garble:
-			return (garble_code, garbled())
 	result[alias_device] = deviceID
 	result[alias_sent] = messageNum
 	result[alias_heart] = float("{0:.2f}".format(randomize(previousJSON[alias_heart], heartHardRange, heartSoftRange, heartSwingRange)))
 	result[alias_blood] = float("{0:.2f}".format(randomize(previousJSON[alias_blood], bloodHardRange, bloodSoftRange, bloodSwingRange)))
 	result[alias_resp] = float("{0:.2f}".format(randomize(previousJSON[alias_resp], respHardRange, respSoftRange, respSwingRange)))
-	return (normal_code, result)
+	return result
 
 class Device:
 	ID = 0
 	messagesSent = 0
 	latestValidMessage = {}
-	garble = 0.05
-	drop = 0.15
 
 	def __init__(self, did, heart=100, blood=75.0, resp=30, messageNum=0):
 		self.ID = did
@@ -86,18 +79,9 @@ class Device:
 		other = Device(self.ID)
 		other.messagesSent = self.messagesSent
 		other.latestValidMessage = self.latestValidMessage
-		other.garble = self.garble
-		other.drop = self.drop
 		return other
 
-	def Copy_Settings(self, other):
-		self.garble = other.garble
-		self.drop = other.drop
-
-
 	def NextMessage(self):
-		response_code, response = partialRandom(self.ID, self.messagesSent, self.latestValidMessage, garble=self.garble, drop=self.drop)
-		if response_code == normal_code:
-			self.latestValidMessage = response
+		response = partialRandom(self.ID, self.messagesSent, self.latestValidMessage)
 		self.messagesSent += 1
 		return response

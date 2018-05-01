@@ -10,7 +10,7 @@ parser.add_argument('-n', '--devices', type=int, default=1, help="How many devic
 parser.add_argument('-o', '--offset', type=int, default=0, help="DeviceIDs will begin incrememting at this number [INT, Default=0]")
 parser.add_argument('-a', '--async', type=int, default=0, help="If 0: Devices send data at same time, Else: Devices send data evenly through time[INT(BOOL), default=0]")
 parser.add_argument('-q', '--quick', type=int, default=0, help="If 0: Will insert in real time, Else: Will insert in real time[INT(BOOL), Default=0]")
-parser.add_argument('-l', '--length', type=float, default=3600.0, help="Length of Time (seconds) that will be simulated [FLOAT, Default=100.0]")
+parser.add_argument('-l', '--length', type=float, default=36000.0, help="Length of Time (seconds) that will be simulated [FLOAT, Default=100.0]")
 parser.add_argument('-s', '--save', type=str, default="", help="Collection to save data to (Database=SavedData)")
 
 args = parser.parse_args()
@@ -29,10 +29,6 @@ def main():
 	device_list = []
 	for i in range(args.devices):
 		device_list.append(Device(args.offset + i))
-
-	for d in device_list:
-		d.garble = 0.0
-		d.drop = 0.0
 
 	message_counter = 0
 	for i in range(int(1.0/args.poll * args.length)):
